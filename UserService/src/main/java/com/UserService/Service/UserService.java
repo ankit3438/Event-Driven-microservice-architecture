@@ -14,12 +14,16 @@ public class UserService {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private MessageProducer messageProducer;
     
     public String createUser(User user) {
         // Placeholder for user creation logic
         try {
             user.setISVerified(false); // efault value for iSVerified
             userRepo.save(user);
+            messageProducer.sendMessage("User created with ID: " + user.getId());
         } catch (Exception e) {
             return "Error: " + e.getMessage();
         }
