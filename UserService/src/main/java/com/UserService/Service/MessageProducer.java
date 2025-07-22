@@ -11,7 +11,7 @@ public class MessageProducer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void sendMessage(String message) {
+    public void sendMessage(Long message) {
         rabbitTemplate.convertAndSend(
             RabbitMQConfig.EXCHANGE_NAME,
             RabbitMQConfig.ROUTING_KEY,
